@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=84.1.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cross-family-monitor"
+version = "0.1.0"
+description = "Send one agent trajectory to judges from two or more different model families and surface exactly where they disagree — same-family review misses things cross-family review catches."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Gang Ji" }]
+keywords = ["agents", "ai-safety", "evaluation", "monitoring", "llm"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Testing",
+]
+dependencies = ["PyYAML>=6.0"]
+
+[project.scripts]
+cfm = "cross_family_monitor.cli:main"
+cross-family-monitor = "cross_family_monitor.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/gangjig/cross-family-monitor"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
